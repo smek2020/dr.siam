@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: drsiam-laravel
+    env: docker
+    plan: free
+    buildCommand: docker build -t drsiam-app .
+    startCommand: docker run -p 80:80 drsiam-app
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        sync: false
